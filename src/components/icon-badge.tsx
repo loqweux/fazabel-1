@@ -33,7 +33,10 @@ export function IconBadge({
   return (
     <span
       className="grid h-11 w-11 shrink-0 place-items-center rounded-xl transition-transform duration-300 hover:scale-105"
-      style={{ background: `color-mix(in srgb, ${color} 14%, transparent)`, color }}
+      style={{
+        background: `color-mix(in srgb, ${color} 14%, transparent)`,
+        color,
+      }}
     >
       <Icon size={size} strokeWidth={2.2} />
     </span>

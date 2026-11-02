@@ -15,13 +15,22 @@ export default function ContactsPage() {
             dark
           />
           <div className="mt-10 flex flex-col gap-5">
-            <a href="tel:+375291060170" className="flex items-center gap-4 text-lg font-semibold">
-              <span className="grid h-11 w-11 place-items-center rounded-md" style={{ background: ORANGE }}>
+            <a
+              href="tel:+375291060170"
+              className="flex items-center gap-4 text-lg font-semibold"
+            >
+              <span
+                className="grid h-11 w-11 place-items-center rounded-md"
+                style={{ background: ORANGE }}
+              >
                 <Phone size={18} />
               </span>
               +375 (29) 10-60-170
             </a>
-            <a href="mailto:info@fazabel.by" className="flex items-center gap-4 text-base text-white/85">
+            <a
+              href="mailto:info@fazabel.by"
+              className="flex items-center gap-4 text-base text-white/85"
+            >
               <span className="grid h-11 w-11 place-items-center rounded-md bg-white/10">
                 <Mail size={18} style={{ color: ORANGE }} />
               </span>

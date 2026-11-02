@@ -25,13 +25,18 @@ export function CtaBand({
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.55 }}
         >
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em]" style={{ color: ORANGE }}>
+          <p
+            className="text-[11px] font-bold uppercase tracking-[0.2em]"
+            style={{ color: ORANGE }}
+          >
             {label}
           </p>
           <h2 className="mt-2 max-w-xl font-display text-2xl font-extrabold tracking-tight md:text-3xl">
             {title}
           </h2>
-          <p className="mt-3 max-w-xl text-[14px] leading-relaxed text-white/60">{text}</p>
+          <p className="mt-3 max-w-xl text-[14px] leading-relaxed text-white/60">
+            {text}
+          </p>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}

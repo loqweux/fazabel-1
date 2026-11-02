@@ -27,7 +27,10 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/uslugi" element={<UslugiPage />} />
-          <Route path="/elektrosnabzhenie" element={<ElektrosnabzheniePage />} />
+          <Route
+            path="/elektrosnabzhenie"
+            element={<ElektrosnabzheniePage />}
+          />
           <Route path="/vyzov-elektrika" element={<VyzovElektrikaPage />} />
           <Route path="/predproekt" element={<PredproektPage />} />
           <Route path="/konkurentnoe" element={<KonkurentnoePage />} />

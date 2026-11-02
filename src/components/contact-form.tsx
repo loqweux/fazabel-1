@@ -6,16 +6,37 @@ import { Send, CheckCircle2 } from "lucide-react";
 import { ORANGE } from "@/lib/constants";
 
 export function ContactForm({ source }: { source: string }) {
-  const [form, setForm] = useState({ name: "", phone: "", email: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle",
+  );
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus("sending");
-    window.setTimeout(() => {
-      setStatus("sent");
-      setForm({ name: "", phone: "", email: "", message: "" });
-    }, 700);
+
+    try {
+      const res = await fetch("/api/send-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, source }),
+      });
+
+      if (res.ok) {
+        setStatus("sent");
+        setForm({ name: "", phone: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+    }
   };
 
   const inputCls =
@@ -31,10 +52,11 @@ export function ContactForm({ source }: { source: string }) {
     >
       <h3 className="font-display text-2xl font-extrabold">Оставьте заявку</h3>
       <p className="mt-2 text-[14px] leading-relaxed text-[#5d6168]">
-        Заполните форму — инженер перезвонит, ответит на вопросы и рассчитает стоимость. Обязательны
-        только имя и телефон. Раздел: {source}.
+        Заполните форму — инженер перезвонит, ответит на вопросы и рассчитает
+        стоимость. Обязательны только имя и телефон. Раздел: {source}.
       </p>
       <form onSubmit={handleSubmit} className="mt-7 flex flex-col gap-4">
+        {/* ... (поля ввода остаются такими же) ... */}
         <label className="text-[13px] font-semibold">
           Имя *
           <input
@@ -57,7 +79,8 @@ export function ContactForm({ source }: { source: string }) {
           />
         </label>
         <label className="text-[13px] font-semibold">
-          Email <span className="font-normal text-[#a4a8ae]">(необязательно)</span>
+          Email{" "}
+          <span className="font-normal text-[#a4a8ae]">(необязательно)</span>
           <input
             type="email"
             value={form.email}
@@ -67,7 +90,8 @@ export function ContactForm({ source }: { source: string }) {
           />
         </label>
         <label className="text-[13px] font-semibold">
-          Сообщение <span className="font-normal text-[#a4a8ae]">(необязательно)</span>
+          Сообщение{" "}
+          <span className="font-normal text-[#a4a8ae]">(необязательно)</span>
           <textarea
             rows={3}
             value={form.message}
@@ -76,6 +100,7 @@ export function ContactForm({ source }: { source: string }) {
             className={`${inputCls} resize-none`}
           />
         </label>
+
         <motion.button
           whileHover={{ scale: 1.015 }}
           whileTap={{ scale: 0.98 }}
@@ -92,6 +117,7 @@ export function ContactForm({ source }: { source: string }) {
             </>
           )}
         </motion.button>
+
         {status === "sent" && (
           <motion.p
             initial={{ opacity: 0, y: 6 }}
@@ -99,9 +125,17 @@ export function ContactForm({ source }: { source: string }) {
             className="flex items-center justify-center gap-2 text-center text-[13px] font-semibold"
             style={{ color: ORANGE }}
           >
-            <CheckCircle2 size={16} /> Спасибо! Инженер свяжется с вами в ближайшее время.
+            <CheckCircle2 size={16} /> Спасибо! Инженер свяжется с вами в
+            ближайшее время.
           </motion.p>
         )}
+
+        {status === "error" && (
+          <p className="text-center text-[13px] font-semibold text-red-500">
+            Не удалось отправить заявку. Пожалуйста, позвоните нам по телефону.
+          </p>
+        )}
+
         <p className="text-center text-[11px] text-[#8a8f96]">
           Нажимая кнопку, вы соглашаетесь на обработку персональных данных.
         </p>

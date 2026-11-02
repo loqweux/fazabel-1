@@ -20,7 +20,6 @@ export default function KonkurentnoePage() {
         />
         <div className="absolute inset-0 bg-linear-to-r from-[#0e1013] via-[#0e1013]/90 to-[#0e1013]/75" />
         <div className="relative mx-auto max-w-7xl px-5">
-          {/* Цвет переведён на ORANGE по фото 4 */}
           <p
             className="text-[11px] font-bold uppercase tracking-[0.2em]"
             style={{ color: ORANGE }}

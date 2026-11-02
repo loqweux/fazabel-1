@@ -7,7 +7,9 @@ import { cn } from "@/utils/cn";
 import { USLUGI_TABS } from "@/lib/constants";
 
 export function UslugiTabs() {
-  const [tab, setTab] = useState<(typeof USLUGI_TABS)[number]["id"]>(USLUGI_TABS[0].id);
+  const [tab, setTab] = useState<(typeof USLUGI_TABS)[number]["id"]>(
+    USLUGI_TABS[0].id,
+  );
   const active = USLUGI_TABS.find((t) => t.id === tab)!;
 
   return (
@@ -19,7 +21,9 @@ export function UslugiTabs() {
             onClick={() => setTab(t.id)}
             className={cn(
               "relative px-4 py-3 text-[13px] font-semibold transition-colors",
-              tab === t.id ? "text-[#6155F5]" : "text-[#5d6168] hover:text-[#15171b]",
+              tab === t.id
+                ? "text-[#6155F5]"
+                : "text-[#5d6168] hover:text-[#15171b]",
             )}
           >
             {t.label}
@@ -53,7 +57,9 @@ export function UslugiTabs() {
               className="flex items-start gap-3 rounded-lg border border-[#ececec] bg-[#f8f8f9] p-4 transition hover:bg-[#f1f1f3]"
             >
               <IconDot icon="CheckCircle2" color="#6155F5" />
-              <span className="text-[14px] leading-snug text-[#30333a]">{service}</span>
+              <span className="text-[14px] leading-snug text-[#30333a]">
+                {service}
+              </span>
             </motion.div>
           ))}
         </motion.div>

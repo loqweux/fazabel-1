@@ -16,7 +16,6 @@ export default function VyzovElektrikaPage() {
         />
         <div className="absolute inset-0 bg-linear-to-r from-[#0e1013] via-[#0e1013]/90 to-[#0e1013]/75" />
         <div className="relative mx-auto max-w-7xl px-5">
-          {/* Заменено с pill-badge на лаконичный чистый капс */}
           <p
             className="text-[11px] font-bold uppercase tracking-[0.2em]"
             style={{ color: ORANGE }}

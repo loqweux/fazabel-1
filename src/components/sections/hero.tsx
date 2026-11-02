@@ -86,7 +86,6 @@ export function Hero() {
           <span>Работаем по всей Беларуси</span>
         </motion.div>
 
-        {/* Вертикальная полоска перед текстом по Фото 2 */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
@@ -101,7 +100,6 @@ export function Hero() {
           <span>Инженерные системы под ключ</span>
         </motion.div>
 
-        {/* Вертикальная оранжевая полоска вдоль главного заголовка по Фото 2 */}
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}

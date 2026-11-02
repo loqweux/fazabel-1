@@ -94,7 +94,6 @@ export function SiteHeader() {
         </div>
       </div>
 
-      {/* Под-меню со стрелочками > между пунктами по Фото 3 */}
       <div className="hidden border-t border-white/10 md:block">
         <div className="mx-auto flex max-w-7xl items-center justify-center gap-x-4 px-5 py-2.5 text-[10px] uppercase tracking-[0.08em] text-white/70 lg:gap-x-7">
           {SUBNAV.map((s, idx) => (

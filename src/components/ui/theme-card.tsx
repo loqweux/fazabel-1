@@ -16,12 +16,8 @@ interface ThemeCardProps {
   className?: string;
 }
 
-// Кэш обработанных изображений, чтобы не пересчитывать при повторных рендерах
 const processedImageCache = new Map<string, string>();
 
-/**
- * Хук удаляет внешний тёмный фон у картинок, превращая их в честный прозрачный PNG
- */
 function useTransparentImage(src: string) {
   const [cleanSrc, setCleanSrc] = React.useState<string>(
     () => processedImageCache.get(src) || src,
@@ -54,7 +50,6 @@ function useTransparentImage(src: string) {
         const imgData = ctx.getImageData(0, 0, w, h);
         const d = imgData.data;
 
-        // Flood-fill (BFS) с краев: удаляем только внешний черный фон
         const visited = new Uint8Array(w * h);
         const queue = new Int32Array(w * h);
         let qHead = 0;
@@ -65,7 +60,6 @@ function useTransparentImage(src: string) {
           return Math.max(d[p], d[p + 1], d[p + 2]) < 55;
         };
 
-        // Добавляем крайние пиксели по периметру
         for (let x = 0; x < w; x++) {
           const top = x;
           const btm = (h - 1) * w + x;
@@ -91,7 +85,6 @@ function useTransparentImage(src: string) {
           }
         }
 
-        // Обходим внешний фон
         while (qHead < qTail) {
           const curr = queue[qHead++];
           const cx = curr % w;
@@ -100,9 +93,8 @@ function useTransparentImage(src: string) {
 
           const maxVal = Math.max(d[p], d[p + 1], d[p + 2]);
           if (maxVal < 26) {
-            d[p + 3] = 0; // Полная прозрачность
+            d[p + 3] = 0;
           } else {
-            // Мягкий переход для сглаживания ореола
             d[p + 3] = Math.round(((maxVal - 26) / 29) * 255);
           }
 
@@ -216,7 +208,6 @@ export const ThemeCard = React.forwardRef<HTMLDivElement, ThemeCardProps>(
           }}
         />
 
-        {/* Фоновая сетка теперь свободно видна под картинкой без каких-либо квадратов */}
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:28px_28px] [mask-image:radial-gradient(ellipse_60%_60%_at_30%_30%,#000_60%,transparent_100%)]" />
 
         <motion.div
@@ -249,7 +240,6 @@ export const ThemeCard = React.forwardRef<HTMLDivElement, ThemeCardProps>(
           </div>
         </div>
 
-        {/* Чистый прозрачный объект без фоновых квадратов и рамок */}
         <motion.img
           src={cleanImageSrc}
           alt={imageAlt}

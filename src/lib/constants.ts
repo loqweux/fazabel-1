@@ -1,17 +1,12 @@
 import type { LucideIcon } from "lucide-react";
-import {
-  ShieldCheck,
-  Layers,
-  Cpu,
-  Headset,
-} from "lucide-react";
+import { ShieldCheck, Layers, Cpu, Headset } from "lucide-react";
 
 export const ORANGE = "#f47a20";
 export const PURPLE = "#6155F5";
 export const DARK = "#15171b";
 
 export const IMG = {
-  hero: "./images/header.jpg",
+  hero: "/images/header.jpg",
   substation:
     "https://images.pexels.com/photos/25537595/pexels-photo-25537595.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=900&w=1600",
   camera:
@@ -21,11 +16,9 @@ export const IMG = {
     "https://images.pexels.com/photos/7286004/pexels-photo-7286004.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=900&w=1600",
   trading:
     "https://images.pexels.com/photos/38412413/pexels-photo-38412413.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=900&w=1600",
-  museum:
-    "./images/museum.jpg",
-  expo: "./images/expo.jpg",
-  exchange:
-    "./images/exchange.jpg",
+  museum: "/images/museum.jpg",
+  expo: "/images/expo.jpg",
+  exchange: "/images/exchange.jpg",
 };
 
 export type NavItem = {
