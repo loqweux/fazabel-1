@@ -33,6 +33,7 @@ export function Process({
         <SectionHead label={label} title={title} text={text} />
 
         <div ref={ref} className="relative mt-14">
+          {/* Линия на десктопе */}
           <div className="absolute left-0 right-0 top-[9px] hidden h-[2px] bg-[#e7e8ea] md:block" />
           <motion.div
             style={{ scaleX }}
@@ -57,6 +58,7 @@ export function Process({
                 whileHover={{ y: -6 }}
                 className="relative pt-2"
               >
+                {/* Тот самый кружок: hidden на мобилке, md:inline-grid на десктопе */}
                 <motion.span
                   initial={{ scale: 0.6, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
@@ -67,11 +69,12 @@ export function Process({
                     damping: 14,
                     delay: i * 0.1,
                   }}
-                  className="relative z-10 mb-4 inline-grid h-5 w-5 place-items-center rounded-full"
+                  className="relative z-10 mb-4 hidden h-5 w-5 place-items-center rounded-full md:inline-grid"
                   style={{ background: accent }}
                 >
                   <span className="h-2 w-2 rounded-full bg-white" />
                 </motion.span>
+
                 <div className="rounded-xl border border-transparent p-1 transition-colors hover:border-[#eceef1]">
                   <span
                     className="text-4xl font-extrabold"

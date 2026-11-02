@@ -75,7 +75,7 @@ export function Hero() {
         }}
       />
 
-      <div className="relative mx-auto flex max-w-7xl flex-col px-5 pb-16 pt-20 md:pt-28">
+      <div className="relative mx-auto flex max-w-7xl flex-col px-5 pb-20 pt-28 md:pt-36">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}

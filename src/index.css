@@ -6,4 +6,9 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #15171b; /* Добавили эту строку */
+}
+
+body {
+  background-color: #ffffff; /* Добавили эту строку */
 }

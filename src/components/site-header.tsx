@@ -16,7 +16,10 @@ export function SiteHeader() {
   const goSubnav = () => navigate("/elektrosnabzhenie");
 
   return (
-    <header className="sticky top-0 z-50 bg-[#15171b] text-white">
+    <header
+      className="sticky top-0 z-50 bg-[#15171b] text-white"
+      style={{ transform: "translateZ(0)", isolation: "isolate" }}
+    >
       <div className="border-b border-white/10">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-1.5 text-[10px] text-white/50">
           <span className="hidden sm:inline">работаем по всей Беларуси</span>
@@ -33,8 +36,8 @@ export function SiteHeader() {
           </div>
         </div>
       </div>
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-3">
-        <Link to="/" onClick={close}>
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3">
+        <Link to="/" onClick={close} className="shrink-0">
           <Logo />
         </Link>
         <nav className="hidden items-center gap-6 text-[12px] xl:flex">
@@ -76,7 +79,7 @@ export function SiteHeader() {
             );
           })}
         </nav>
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-3">
           <Link
             to="/contacts"
             className="hidden items-center whitespace-nowrap rounded-md px-4 py-2 text-[12px] font-semibold text-white transition hover:brightness-110 md:flex"
