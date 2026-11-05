@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { ShieldCheck, Layers, Cpu, Headset } from "lucide-react";
+import { ShieldCheck, Layers, Smartphone, Headset } from "lucide-react";
 
 export const ORANGE = "#f47a20";
 export const PURPLE = "#6155F5";
@@ -77,11 +77,11 @@ export const WHY: WhyItem[] = [
     image: "/images/why-fullcycle.png",
   },
   {
-    icon: Cpu,
-    category: "Производство",
-    title: "Собственное производство",
-    desc: "Разрабатываем и выпускаем электронные устройства — от прототипа до серии.",
-    image: "/images/why-production.png",
+    icon: Smartphone,
+    category: "Приложение",
+    title: "Статус работ онлайн",
+    desc: "Отслеживаем статус работ и параметры проектов в мобильном приложении и в кабинете на сайте.",
+    image: "/images/why-tracking.png",
   },
   {
     icon: Headset,
