@@ -62,7 +62,9 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-6 text-[12px] text-white/40 md:flex-row">
-          <span>© 2026 ФАЗА.БЕЛ. Все права защищены.</span>
+          <span>
+            © 2026 ФАЗА.БЕЛ. Все права защищены. Сайт создан компанией ASIMO.BY
+          </span>
           <span>fazabel.by</span>
         </div>
       </div>
